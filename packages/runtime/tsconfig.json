@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "lib": ["ES2020", "DOM"]
+  },
+  "include": ["src/**/*"],
+  "references": [
+    { "path": "../core" },
+    { "path": "../recorder" },
+    { "path": "../matcher" },
+    { "path": "../detector" },
+    { "path": "../generator" },
+    { "path": "../registry" }
+  ]
+}

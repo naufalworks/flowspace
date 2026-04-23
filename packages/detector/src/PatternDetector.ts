@@ -36,6 +36,7 @@ export interface DetectedPattern {
   actions: RecordedAction[];
   frequency: number;
   confidence: number;
+  successRate: number;
   suggestSkill: boolean;
 }
 
@@ -145,6 +146,7 @@ export class PatternDetector {
       actions: firstOccurrence,
       frequency: occurrences.length,
       confidence,
+      successRate: 1.0, // Default to 100% - will be updated with actual execution data
       suggestSkill
     };
   }

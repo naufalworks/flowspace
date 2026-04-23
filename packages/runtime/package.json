@@ -1,0 +1,27 @@
+{
+  "name": "@flowspace/runtime",
+  "version": "0.1.0",
+  "description": "Main orchestrator - integrates all FlowSpace components",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "jest",
+    "dev": "tsc -b --watch"
+  },
+  "dependencies": {
+    "@flowspace/core": "*",
+    "@flowspace/recorder": "*",
+    "@flowspace/matcher": "*",
+    "@flowspace/detector": "*",
+    "@flowspace/generator": "*",
+    "@flowspace/registry": "*",
+    "playwright": "^1.40.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.0"
+  }
+}
