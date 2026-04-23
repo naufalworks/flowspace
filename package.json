@@ -20,5 +20,8 @@
     "web-scraping"
   ],
   "author": "naufalworks",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bloom-filters": "^3.0.4"
+  }
 }
