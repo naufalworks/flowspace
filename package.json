@@ -1,0 +1,24 @@
+{
+  "name": "flowspace",
+  "version": "0.1.0",
+  "description": "Self-reshaping automation workspace - learns from your actions and generates reusable skills",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "dev": "npm run dev --workspaces --if-present"
+  },
+  "keywords": [
+    "automation",
+    "browser",
+    "cvl",
+    "morpheus",
+    "skill-generation",
+    "web-scraping"
+  ],
+  "author": "naufalworks",
+  "license": "MIT"
+}
