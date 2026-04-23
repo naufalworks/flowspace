@@ -76,61 +76,59 @@ npm install
 # Build all packages
 npm run build
 
-# Run tests
-npm run test
-
-# Start development
-npm run dev
+# Run example
+npx ts-node examples/quick-start.ts
 ```
 
-## Example Usage
+## Usage
 
-### Recording a Login Flow
+### Basic Example
 
 ```typescript
 import { FlowSpaceRuntime } from '@flowspace/runtime';
 
+// 1. Initialize
 const flowspace = new FlowSpaceRuntime();
+await flowspace.initialize('https://example.com');
 
-// Start recording
+// 2. Record actions
 await flowspace.startRecording();
+// ... perform actions manually in the browser ...
+const { suggestedSkills } = await flowspace.stopRecording();
 
-// Perform actions (manually in browser)
-// 1. Click login button
-// 2. Type username
-// 3. Type password
-// 4. Click submit
-
-// Stop recording
-const actions = await flowspace.stopRecording();
-
-// FlowSpace detects pattern and generates skill
-// Output: "Login flow detected! Generated skill: login-flow.md"
-```
-
-### Using Generated Skills
-
-```typescript
-// Execute generated skill
+// 3. Execute generated skill
 await flowspace.executeSkill('login-flow', {
   username: 'user@example.com',
   password: 'secret123'
 });
 
-// Works on any site with similar login pattern!
+// 4. Cleanup
+await flowspace.cleanup();
 ```
 
-## Development Status
+### Complete Example
 
-- ✅ Morpheus integration (classification, CVL, knowledge base)
-- ✅ FlowMind integration (scraping, execution, decision-making)
-- 🚧 ActionRecorder (in progress)
-- 🚧 CVLMatcher (in progress)
-- 🚧 PatternDetector (planned)
-- 🚧 SkillGenerator (planned)
-- 🚧 SkillRegistry (planned)
-- 🚧 FlowSpaceRuntime (planned)
-- 🚧 Browser UI (planned)
+See [examples/login-flow.ts](./examples/login-flow.ts) for a full demonstration.
+
+## How It Works
+
+1. **Record**: FlowSpace watches you perform actions (click, type, select)
+2. **Analyze**: Converts actions to CVL tokens and detects repeated patterns
+3. **Generate**: Creates SKILL.md files with executable JavaScript code
+4. **Execute**: Runs skills on any site with similar patterns
+
+## Packages
+
+- **core**: Morpheus + FlowMind integration
+- **recorder**: ActionRecorder (captures user actions)
+- **matcher**: CVLMatcher (reverse lookup by CVL)
+- **detector**: PatternDetector (finds repeated patterns)
+- **generator**: SkillGenerator (creates SKILL.md files)
+- **registry**: SkillRegistry (manages skills)
+- **runtime**: FlowSpaceRuntime (main orchestrator)
+- **ui**: Browser UI (recording controls, visualization)
+
+## Quick Start
 
 ## Research Contribution
 
@@ -153,3 +151,33 @@ MIT
 - GitHub: https://github.com/naufalworks/flowspace
 - Morpheus: https://github.com/naufalworks/morpheus
 - FlowMind: https://github.com/naufalworks/flowmind
+
+## Development Status
+
+- ✅ Repository structure (monorepo with workspaces)
+- ✅ Core package (type definitions)
+- ✅ ActionRecorder (records user actions)
+- ✅ CVLMatcher (reverse lookup by CVL)
+- ✅ PatternDetector (detects repeated patterns)
+- ✅ SkillGenerator (generates SKILL.md files)
+- ✅ SkillRegistry (manages and executes skills)
+- ✅ FlowSpaceRuntime (main orchestrator)
+- ✅ Examples and documentation
+- 🚧 Browser UI (planned)
+- 🚧 Tests (planned)
+
+**Progress: 80% complete** (8/10 tasks done)
+
+## Contributing
+
+Contributions welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
+
+## License
+
+MIT
+
+## Acknowledgments
+
+Built on top of:
+- [Morpheus](https://github.com/naufalworks/morpheus) - Scene graph-based UI classification
+- [FlowMind](https://github.com/naufalworks/flowmind) - Autonomous web scraping
